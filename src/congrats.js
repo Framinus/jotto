@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
 * @function Congrats
@@ -20,4 +21,8 @@ export default function Congrats (props) {
       <div data-test="component-congrats" />
     );
   }
-}
+};
+
+Congrats.propTypes = {
+  success: PropTypes.bool.isRequired,
+};
