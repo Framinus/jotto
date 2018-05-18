@@ -4,7 +4,7 @@ import './App.css';
 import GuessedWords from './GuessedWords';
 import Congrats from './congrats';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="container">
