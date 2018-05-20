@@ -1,7 +1,7 @@
 import moxios from 'moxios';
 
 import { storeFactory } from '../../test/testUtils';
-import { getSecretWord } from './';
+import { getSecretWord, increaseTotalGuesses } from './';
 
 describe('getSecretWord action creator', () => {
   beforeEach(() => {
@@ -28,4 +28,4 @@ describe('getSecretWord action creator', () => {
         expect(newState.secretWord).toBe(secretWord);
       })
   });
-})
+});

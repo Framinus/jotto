@@ -17,6 +17,7 @@ export default function GuessedWords(props) {
         >
         <td>{ word.guessedWord }</td>
         <td>{ word.letterMatchCount }</td>
+        <td>{ word.newGuessCount }</td>
       </tr>
     ));
     contents = (
@@ -27,6 +28,7 @@ export default function GuessedWords(props) {
             <tr>
               <th>Guess</th>
               <th>Matching Letters</th>
+              <th># of Guesses</th>
             </tr>
           </thead>
           <tbody>
@@ -50,4 +52,5 @@ GuessedWords.propTypes = {
       letterMatchCount: PropTypes.number.isRequired,
     })
   ).isRequired,
+  totalGuesses: PropTypes.number,
 };

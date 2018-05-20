@@ -5,6 +5,7 @@ export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
   SET_SECRET_WORD: 'SET_SECRET_WORD',
+  SET_TOTAL_GUESSES: 'SET_TOTAL_GUESSES',
 };
 
 /**
@@ -17,11 +18,18 @@ export const actionTypes = {
 export function guessWord(guessedWord) {
   return function(dispatch, getState) {
     const secretWord = getState().secretWord;
+    const totalGuessCount = getState().totalGuesses;
+    const newGuessCount = totalGuessCount + 1;
     const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
 
     dispatch({
       type: actionTypes.GUESS_WORD,
-      payload: { guessedWord, letterMatchCount }
+      payload: { guessedWord, letterMatchCount, newGuessCount }
+    });
+
+    dispatch({
+      type: actionTypes.SET_TOTAL_GUESSES,
+      payload: newGuessCount,
     });
 
     if (guessedWord === secretWord) {
@@ -31,6 +39,7 @@ export function guessWord(guessedWord) {
     }
   };
 };
+
 
 /**
 * @function getSecretWord
@@ -47,4 +56,4 @@ export function getSecretWord() {
         })
       })
   }
-}
+};
