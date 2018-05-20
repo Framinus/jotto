@@ -35,10 +35,7 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, { getSecretWord })(UnconnectedApp);
 
-// jotto challenges.
-
-// 2) add a new word button. displays after successful guess.
-// reset the game with a new word from the server.
+// jotto challenges left to fulfill: 
 
 // 3) create a 'give up' button.
 // display when the word has not displayed correctly.
