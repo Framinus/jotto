@@ -4,8 +4,11 @@ import { getLetterMatchCount } from '../helpers';
 export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
+  CLEAR_GUESSED_WORDS: 'CLEAR_GUESSED_WORDS',
   SET_SECRET_WORD: 'SET_SECRET_WORD',
   SET_TOTAL_GUESSES: 'SET_TOTAL_GUESSES',
+  CLEAR_TOTAL_GUESSES: 'CLEAR_TOTAL_GUESSES',
+  RESET_SUCCESS: 'RESET_SUCCESS',
 };
 
 /**
@@ -38,6 +41,29 @@ export function guessWord(guessedWord) {
       });
     }
   };
+};
+
+/**
+* @function resetGame
+*
+* @returns {function} Redux Thunk function
+*/
+
+export function resetGame() {
+  return function(dispatch) {
+    // resets success to false.
+    dispatch({
+      type: actionTypes.RESET_SUCCESS,
+    });
+    // resets guessedWords to empty array.
+    dispatch({
+      type: actionTypes.CLEAR_GUESSED_WORDS,
+    });
+    // resets totalGuesses to 0.
+    dispatch({
+      type: actionTypes.CLEAR_TOTAL_GUESSES,
+    });
+  }
 };
 
 

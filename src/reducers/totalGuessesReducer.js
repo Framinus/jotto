@@ -11,6 +11,8 @@ export default function (state=0, action) {
   switch(action.type) {
     case(actionTypes.SET_TOTAL_GUESSES):
       return action.payload;
+    case(actionTypes.CLEAR_TOTAL_GUESSES):
+      return 0;
     default:
       return state;
   }

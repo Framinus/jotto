@@ -1,5 +1,5 @@
 import { storeFactory } from '../test/testUtils';
-import { guessWord } from './actions';
+import { guessWord, resetGame } from './actions';
 
 describe('guessWord action dispatcher', () => {
   const secretWord = 'party';
@@ -79,5 +79,27 @@ describe('guessWord action dispatcher', () => {
       };
       expect(newState).toEqual(expectedState);
     });
+  });
+});
+
+describe('`resetGame` action dispatcher', () => {
+  const success = true;
+  const guessedWords = [{ guessedWord: 'party', letterMatchCount: 5 }];
+  const secretWord = 'party';
+  const totalGuesses = 1;
+  const initialState = { success, guessedWords, secretWord, totalGuesses };
+  let store
+  store = storeFactory(initialState);
+  test('clears guessed words, toggles success to false, and resets guess count', () => {
+    store.dispatch(resetGame());
+    const newState = store.getState();
+    const expectedState = {
+      ...initialState,
+      secretWord,
+      success: false,
+      guessedWords: [],
+      totalGuesses: 0,
+    };
+    expect(newState).toEqual(expectedState);
   });
 });
